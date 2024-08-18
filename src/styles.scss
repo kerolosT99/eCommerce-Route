@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Encode+Sans+Expanded:wght@300&family=Nerko+One&display=swap');
+
+:root {
+    --font-family: "Encode Sans Expanded", sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+}

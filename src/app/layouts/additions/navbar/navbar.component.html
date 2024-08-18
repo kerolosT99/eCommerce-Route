@@ -1,0 +1,33 @@
+<nav>
+    <div class="w-full px-16 py-3 sticky bg-gray-100 flex items-center justify-between">
+        <div class="nav-left flex items-center gap-3">
+            <a class="pr-10" routerLink="">
+                <img src="assets/images/freshcart-logo.svg" alt="freshcart-logo">
+            </a>
+            @if(isLogin){
+            <a class="nav-link opacity-90" routerLink="home">Home</a>
+            <a class="nav-link opacity-90" routerLink="cart">Cart</a>
+            <a class="nav-link opacity-90" routerLink="products">Products</a>
+            <a class="nav-link opacity-90" routerLink="categories">Categories</a>
+            <a class="nav-link opacity-90" routerLink="brands">Brands</a>
+            }
+
+        </div>
+        <div class="nav-right flex items-center gap-3">
+            <i class="fa-brands fa-instagram cursor-pointer"></i>
+            <i class="fa-brands fa-facebook cursor-pointer"></i>
+            <i class="fa-brands fa-tiktok cursor-pointer"></i>
+            <i class="fa-brands fa-twitter cursor-pointer"></i>
+            <i class="fa-brands fa-linkedin cursor-pointer"></i>
+            <i class="fa-brands fa-youtube cursor-pointer"></i>
+            @if(!isLogin){
+
+            <a class="nav-link opacity-90" routerLink="login">Login</a>
+            <a class="nav-link opacity-90" routerLink="register">Register</a>
+            }
+            @else {
+            <a (click)="_AuthenticationService.logOut()" class="nav-link opacity-90 cursor-pointer">Logout</a>
+            }
+        </div>
+    </div>
+</nav>
