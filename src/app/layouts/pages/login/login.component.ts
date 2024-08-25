@@ -2,13 +2,13 @@ import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../shared/services/authentication/authentication.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FailAuthResponse, SuccessAuthResponse } from '../../../shared/interfaces/authentication-reponse';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

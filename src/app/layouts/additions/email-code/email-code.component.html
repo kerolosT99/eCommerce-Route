@@ -1,0 +1,39 @@
+<div class="forgot-password-container mx-auto md:w-2/3">
+    <h1 class="text-2xl font-semibold mb-4">Enter your code:</h1>
+    @if (errorMsg){
+    <div class="bg-red-300 rounded-lg px-4 py-2">
+        <p>{{errorMsg}}</p>
+    </div>
+    }
+    <form [formGroup]="emailCode" (ngSubmit)="resetCode()">
+        <span class=" pb-20 font-semibold ">Code:</span>
+        <input class="w-full border rounded-md py-2 px-3" formControlName="resetCode" type="text">
+        @if(emailCode.get('resetCode')?.errors&&emailCode.get('resetCode')?.touched){
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+            <svg class="flex-shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+                <span class="font-medium">Ensure that these requirements are met:</span>
+                <ul class="mt-1.5 list-disc list-inside">
+                    @if(emailCode.get('resetCode')?.errors?.['required'])
+                    {<li>Code's required</li>}
+                    @else if(emailCode.get('resetCode')?.errors?.['pattern']){<li>Please enter a valid code</li>}
+                </ul>
+            </div>
+        </div>
+        }
+        <button [disabled]="emailCode.invalid" [ngClass]="emailCode.invalid? 'bg-green-500' : 'bg-green-600'"
+            class="btn-main block ms-auto">
+            @if(isLoading){
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            }
+            @else {
+            <span>Send</span>
+            }</button>
+    </form>
+
+</div>

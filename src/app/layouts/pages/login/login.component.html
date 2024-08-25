@@ -53,13 +53,16 @@
                 }
             </div>
         </div>
-        <button [disabled]="loginForm.invalid" class="ms-auto block mt-2  px-3 py-2 rounded-md text-white
-            " [ngClass]="loginForm.invalid ? 'bg-green-500' : 'bg-green-600'" let me put this here>
-            @if(isLoading){
-            <i class="fa-solid fa-spinner fa-spin"></i>
-            }
-            @else {
-            <span>Login </span>
-            }</button>
+        <div class="row justify-end items-center">
+            <a routerLink="/forgot-password" class="me-5 text-blue-700 underline">Forgot your password?</a>
+            <button [disabled]="loginForm.invalid" class=" block mt-2  px-3 py-2 rounded-md text-white
+            " [ngClass]="loginForm.invalid ? 'bg-green-500' : 'bg-green-600'">
+                @if(isLoading){
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                }
+                @else {
+                <span>Login </span>
+                }</button>
+        </div>
     </form>
 </div>

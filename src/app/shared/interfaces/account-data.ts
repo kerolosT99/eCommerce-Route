@@ -4,8 +4,14 @@ export interface registerData extends loginData {
     phone: string;
 }
 
-export interface loginData {
-    email: string
+export interface loginData extends userEmail {
     password: string
+}
+
+export interface userEmail {
+    email: string
+}
+export interface NewLoginData extends userEmail {
+    newPassword: string
 }
 

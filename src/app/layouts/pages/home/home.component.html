@@ -1,1 +1,30 @@
-<p>home works!</p>
+<app-home-slider></app-home-slider>
+
+<h2 class="my-3 text-xl font-medium">Show Popular Categories</h2>
+<app-category-slider></app-category-slider>
+@if(isLoading){
+<div class="h-screen row justify-center items-center">
+    <span class="loader"></span>
+</div>
+}
+@else{
+
+<div class="container mx-auto">
+    <div class="row">
+        @for (product of productsList; track $index) {
+        <div class="md:w-2/12 p-3">
+            <div class="product p-2">
+                <img [src]="product.imageCover" class="w-full" alt="">
+                <span class="text-main text-sm">{{product.category.name}}</span>
+                <h3 class="my-3 text-xl font-medium">{{product.title.split(" ").splice(0, 2).join(" ")}} </h3>
+                <div class="row justify-between">
+                    <span>{{product.price}} EGP</span>
+                    <span>{{product.ratingsAverage}} <i class="fa fa-star text-yellow-300"></i></span>
+                </div>
+                <button class="btn-main w-full">Add to cart</button>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+}

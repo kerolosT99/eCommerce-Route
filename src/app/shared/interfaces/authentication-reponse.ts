@@ -13,3 +13,8 @@ interface User {
     email: string;
     role: string;
 }
+
+export interface ForgotPasswordResponse {
+    statusMsg: string;
+    message: string;
+}

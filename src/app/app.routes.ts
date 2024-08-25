@@ -8,6 +8,9 @@ import { RegisterComponent } from './layouts/pages/register/register.component';
 import { LoginComponent } from './layouts/pages/login/login.component';
 import { NotfoundComponent } from './layouts/additions/notfound/notfound.component';
 import { authenticationGuard } from './shared/guards/authentication.guard';
+import { ForgotPasswordComponent } from './layouts/additions/forgot-password/forgot-password.component';
+import { EmailCodeComponent } from './layouts/additions/email-code/email-code.component';
+import { ResetPasswordComponent } from './layouts/additions/reset-password/reset-password.component';
 
 export const routes: Routes = [
 
@@ -19,6 +22,9 @@ export const routes: Routes = [
     { path: "products", component: ProductsComponent, canActivate: [authenticationGuard] },
     { path: "register", component: RegisterComponent },
     { path: "login", component: LoginComponent },
+    { path: "forgot-password", component: ForgotPasswordComponent },
+    { path: "email-code", component: EmailCodeComponent },
+    { path: "reset-password", component: ResetPasswordComponent },
     { path: "**", component: NotfoundComponent },
 
 ];
