@@ -9,22 +9,30 @@
 }
 @else{
 
-<div class="container mx-auto">
-    <div class="row">
-        @for (product of productsList; track $index) {
-        <div class="md:w-2/12 p-3">
-            <div class="product p-2">
-                <img [src]="product.imageCover" class="w-full" alt="">
-                <span class="text-main text-sm">{{product.category.name}}</span>
-                <h3 class="my-3 text-xl font-medium">{{product.title.split(" ").splice(0, 2).join(" ")}} </h3>
-                <div class="row justify-between">
-                    <span>{{product.price}} EGP</span>
-                    <span>{{product.ratingsAverage}} <i class="fa fa-star text-yellow-300"></i></span>
-                </div>
-                <button class="btn-main w-full">Add to cart</button>
-            </div>
+    <div class="container mx-auto">
+        <div class="w-3/4 mx-auto my-5">
+            <input [(ngModel)]="userWord" type="text" class="rounded border-2 w-full p-2" placeholder="Search by title..">
         </div>
-        }
+        <div class="row">
+            @for (product of productsList | productSearch :userWord; track $index) {
+            <div class="md:w-2/12 p-3">
+                <div class="product p-2 cursor-pointer">
+                    <div [routerLink]="['/product-details', product._id]">
+                        <img [src]="product.imageCover" class="w-full" alt="">
+                        <span class="text-main text-sm">{{product.category.name|uppercase}}</span>
+                        <h3 class="my-3 text-xl font-medium">{{product.title.split(" ").splice(0, 2).join(" ")}} </h3>
+                        <div class="row justify-between">
+                            <span>{{product.price}} EGP</span>
+                            <span>{{product.ratingsAverage}} <i class="fa fa-star text-yellow-300"></i></span>
+                        </div>
+                    </div>
+                    <i (click)="toggleWishItem(product._id)"
+                        [ngClass]="isWished(product.id)?'text-pink-600':'text-black'"
+                        class="text-2xl fa fa-heart mb-2"></i>
+                    <button (click)="addProductToCart(product._id)" class="btn-main w-full">Add to cart</button>
+                </div>
+            </div>
+            }
+        </div>
     </div>
-</div>
 }

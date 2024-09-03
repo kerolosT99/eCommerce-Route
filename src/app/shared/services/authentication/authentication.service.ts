@@ -9,12 +9,12 @@ import { UserData } from '../../interfaces/user-data';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { ResetCode } from '../../interfaces/email-code';
-import { Token } from '@angular/compiler';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
+  userID!: string
   userData: BehaviorSubject<any> = new BehaviorSubject(null);
   resetEmail!: string
   constructor(private _HttpClient: HttpClient, private _Router: Router, @Inject(PLATFORM_ID) id: object) {

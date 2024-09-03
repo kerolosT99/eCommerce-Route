@@ -11,6 +11,10 @@ import { authenticationGuard } from './shared/guards/authentication.guard';
 import { ForgotPasswordComponent } from './layouts/additions/forgot-password/forgot-password.component';
 import { EmailCodeComponent } from './layouts/additions/email-code/email-code.component';
 import { ResetPasswordComponent } from './layouts/additions/reset-password/reset-password.component';
+import { ProductDetailsComponent } from './layouts/additions/product-details/product-details.component';
+import { ShippingAddressComponent } from './layouts/additions/shipping-address/shipping-address.component';
+import { AllOrdersComponent } from './layouts/additions/all-orders/all-orders.component';
+import { WishlistComponent } from './layouts/pages/wishlist/wishlist.component';
 
 export const routes: Routes = [
 
@@ -20,11 +24,15 @@ export const routes: Routes = [
     { path: "categories", component: CategoriesComponent, canActivate: [authenticationGuard] },
     { path: "brands", component: BrandsComponent, canActivate: [authenticationGuard] },
     { path: "products", component: ProductsComponent, canActivate: [authenticationGuard] },
+    { path: "allorders", component: AllOrdersComponent, canActivate: [authenticationGuard] },
+    { path: "wishlist", component: WishlistComponent, canActivate: [authenticationGuard] },
     { path: "register", component: RegisterComponent },
     { path: "login", component: LoginComponent },
     { path: "forgot-password", component: ForgotPasswordComponent },
     { path: "email-code", component: EmailCodeComponent },
     { path: "reset-password", component: ResetPasswordComponent },
+    { path: "product-details/:id", component: ProductDetailsComponent, canActivate: [authenticationGuard] },
+    { path: "shipping-address/:cartID", component: ShippingAddressComponent, canActivate: [authenticationGuard] },
     { path: "**", component: NotfoundComponent },
 
 ];

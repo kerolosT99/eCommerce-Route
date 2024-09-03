@@ -15,3 +15,8 @@ export interface NewLoginData extends userEmail {
     newPassword: string
 }
 
+export interface shippingData {
+    details: string,
+    phone: string,
+    city: string
+}

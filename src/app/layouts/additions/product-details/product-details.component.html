@@ -1,1 +1,35 @@
-<p>product-details works!</p>
+@if(isLoading){
+<div class="h-screen row justify-center items-center">
+    <span class="loader"></span>
+</div>
+}
+@else{
+@if(product){
+<div class="container mx-auto my-5">
+    <div class="row items-center">
+        <div class="md:w-3/12 p-3">
+            <owl-carousel-o [options]="customOptions">
+
+                @for (image of product.images; track $index) {
+
+                <ng-template carouselSlide [id]="product.id">
+                    <img [src]="image" [alt]="product.title">
+                </ng-template>
+                }
+
+
+            </owl-carousel-o>
+        </div>
+        <div class="md:w-9/12 p-3">
+            <h1 class="text-lg font-medium">{{product.title}}</h1>
+            <p class="text-sm text-gray-500 my-3">{{product.description}}</p>
+            <span class="text-xs">{{product.category.name}}</span>
+            <div class="row justify-between my-3">
+                <span>{{product.price}} EGP</span>
+                <span>{{product.ratingsAverage}}<i class="fa fa-star text-yellow-300"></i></span>
+            </div>
+            <button (click)="addProductToCart()" class="btn-main w-full">Add to cart</button>
+        </div>
+    </div>
+</div>
+}}

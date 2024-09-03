@@ -5,12 +5,14 @@
                 <img src="assets/images/freshcart-logo.svg" alt="freshcart-logo">
             </a>
             @if(isLogin){
-            <a class="nav-link opacity-90" routerLink="home">Home</a>
-            <a class="nav-link opacity-90" routerLink="cart">Cart</a>
-            <a class="nav-link opacity-90" routerLink="products">Products</a>
-            <a class="nav-link opacity-90" routerLink="categories">Categories</a>
-            <a class="nav-link opacity-90" routerLink="brands">Brands</a>
-            }
+            <a class="nav-link opacity-90 p-2" routerLink="home" routerLinkActive="bg-main rounded-lg text-white">Home</a>
+            <a class="nav-link opacity-90 p-3" routerLink="cart" routerLinkActive="bg-main rounded-lg text-white">Cart</a>
+            <a class="nav-link opacity-90 p-3" routerLink="products" routerLinkActive="bg-main rounded-lg text-white">Products</a>
+            <a class="nav-link opacity-90 p-3" routerLink="categories" routerLinkActive="bg-main rounded-lg text-white">Categories</a>
+            <a class="nav-link opacity-90 p-3" routerLink="brands" routerLinkActive="bg-main rounded-lg text-white">Brands</a>
+            <a class="nav-link opacity-90 p-3" routerLink="wishlist" routerLinkActive="bg-main rounded-lg text-white">Wishlist</a>
+            <a class="nav-link opacity-90 p-3" routerLink="allorders" routerLinkActive="bg-main rounded-lg text-white">Orders</a>
+        }
 
         </div>
         <div class="nav-right flex items-center gap-3">
@@ -27,6 +29,10 @@
             }
             @else {
             <a (click)="_AuthenticationService.logOut()" class="nav-link opacity-90 cursor-pointer">Logout</a>
+            <a> <i routerLink="cart" class="fa fa-shopping-cart text-main cursor-pointer"> @if(this._CartService.cartNumberCounter){
+                    {{this._CartService.cartNumberCounter.getValue()}}
+                    }
+                </i></a>
             }
         </div>
     </div>

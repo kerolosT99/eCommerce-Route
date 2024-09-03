@@ -1,0 +1,32 @@
+@if(isLoading){
+<div class="h-screen row justify-center items-center">
+    <span class="loader"></span>
+</div>
+}
+@else{
+@if(wishList){
+<h1 class="font-bold text-3xl text-main text-center mb-5">Wishlist</h1>
+@for (item of wishList; track $index) {
+<div class="row bg-gray-200 border-b border-white items-center rounded-lg">
+    <div class="md:w-1/12 p-3">
+        <img [src]="item.imageCover" class="w-full rounded-md overflow-hidden" alt="">
+    </div>
+    <div class="md:w-9/12 p-3">
+        <h2 class="text-lg font-semibold mt-2">{{item.title}}</h2>
+        <p class="text-main my-3 font-semibold">Price: {{item.price}}</p>
+        <span (click)="removeItemFromWishList(item._id)" class="mb-2 cursor-pointer font-bold p-3 bg-red-500 rounded-md">Remove Item <i
+                class="fa fa-trash text-main"></i></span>
+    </div>
+    <div class="md:w-2/12 justify-self-end">
+        <button (click)="addProductToCart(item._id)" class="btn-main">Add To Cart</button>
+    </div>
+</div>
+}}}
+<!-- <button class="btn-main block ms-auto my-5" [routerLink]="['/shipping-address', cartData._id]">Place Order</button> -->
+
+
+<!-- @else {
+<div class="bg-red-300 text-red-700 my-5">
+    <p>{{errorMsg}}</p>
+</div>
+}} -->

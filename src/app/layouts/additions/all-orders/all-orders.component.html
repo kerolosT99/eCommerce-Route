@@ -1,0 +1,53 @@
+@if(isLoading){
+<div class="h-screen row justify-center items-center">
+    <span class="loader"></span>
+</div>
+}
+@else{<div
+    class="relative flex flex-col w-full h-full text-slate-300 bg-slate-800 shadow-md rounded-lg bg-clip-border">
+    <table class="w-full text-center table-auto min-w-max">
+        <thead>
+            <tr>
+                <th class="p-4 border-b border-green-600 bg-green-700">
+                    <p class="text-sm font-normal leading-none text-white">
+                        Date
+                    </p>
+                </th>
+                <th class="p-4 border-b border-green-600 bg-green-700">
+                    <p class="text-sm font-normal leading-none text-white">
+                        Price
+                    </p>
+                </th>
+
+                <th class="p-4 border-b border-green-600 bg-green-700">
+                    <p class="text-sm font-normal leading-none text-white">
+                        Payment method
+                    </p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (order of userOrders; track $index) {
+
+            <tr class="even:bg-green-900 hover:bg-green-700">
+                <td class="p-4 border-b border-green-700">
+                    <p class="text-sm text-green-100 font-semibold">
+                        {{order.createdAt | date: 'medium'}}
+                    </p>
+                </td>
+                <td class="p-4 border-b border-green-700">
+                    <p class="text-sm text-green-300">
+                        {{order.totalOrderPrice}}
+                    </p>
+                </td>
+                <td class="p-4 border-b border-green-700">
+                    <p class="text-sm text-green-300">
+                        {{order.paymentMethodType}}
+                    </p>
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>}

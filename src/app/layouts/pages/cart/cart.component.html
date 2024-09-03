@@ -1,1 +1,40 @@
-<p>cart works!</p>
+@if(isLoading){
+<div class="h-screen row justify-center items-center">
+    <span class="loader"></span>
+</div>
+}
+@else{
+@if(cartData){
+
+<div class="container mx-auto">
+    <h1 class="text-xl font-semibold my-3">Shop Cart</h1>
+    <p class="text-main mb-3">Total Price: {{cartData.totalCartPrice}} </p>
+
+    @for (product of cartData.products; track $index) {
+    <div class="row bg-gray-200 border-b border-white items-center rounded-lg">
+        <div class="md:w-1/12 p-3">
+            <img [src]="product.product.imageCover" class="w-full rounded-md overflow-hidden" alt="">
+        </div>
+        <div class="md:w-10/12 p-3">
+            <h2 class="text-lg font-semibold mt-2">{{product.product.title}}</h2>
+            <p class="text-main my-3 font-semibold">Price: {{product.price}}</p>
+            <span (click)="removeSpecificProduct(product.product._id)" class="mb-2 cursor-pointer font-bold p-3 bg-red-500 rounded-md">Remove <i
+                    class="fa fa-trash text-main"></i></span>
+        </div>
+        <div class="md:w-1/12 p-3">
+            <button (click)="updateProductQuantity(product.product._id, product.count=product.count+1)"
+                class="text-white bg-green-400 rounded p-2">+</button>
+            <span class="px-2">{{product.count}}</span>
+            <button (click)="updateProductQuantity(product.product._id, product.count=product.count-1)"
+                class="text-white bg-red-400 rounded p-2">-</button>
+        </div>
+    </div>
+    }
+    <button class="btn-main block ms-auto my-5" [routerLink]="['/shipping-address', cartData._id]">Place Order</button>
+</div>
+}
+@else {
+<div class="bg-red-300 text-red-700 my-5">
+    <p>{{errorMsg}}</p>
+</div>
+}}

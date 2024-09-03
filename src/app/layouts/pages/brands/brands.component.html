@@ -1,1 +1,21 @@
-<p>brands works!</p>
+@if(isLoading){
+<div class="h-screen row justify-center items-center">
+    <span class="loader"></span>
+</div>
+}
+@else{
+<div class="container mx-auto ">
+    <h1 class="font-bold text-3xl text-main text-center">All Brands</h1>
+    <div class="row ">
+        @for (brand of brandsList; track $index) {
+        <div class="md:w-3/12 p-4 cursor-pointer ">
+            <div class="border text-center p-5 ">
+                <img [src]="brand.image" class="w-full" alt="">
+                <span class="text-sm text-main ">{{brand.name}}</span>
+            </div>
+        </div>
+        }
+
+    </div>
+</div>
+}
